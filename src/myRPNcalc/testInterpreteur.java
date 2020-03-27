@@ -14,7 +14,8 @@ public class testInterpreteur {
 	@Test
 	public void testUndo() {
 		Interpreteur it = Interpreteur.init();
-		assertEquals(it.executeCommand("undo"), 1);
+		Double test = 1.0;
+		assertEquals(it.executeCommand("undo"), test);
 	}
 	
 	@Test

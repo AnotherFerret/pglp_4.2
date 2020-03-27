@@ -5,11 +5,23 @@ public class RPNcalc {
 	public static void main(String[] args) {
 		
 		Interpreteur it = Interpreteur.init();
-		System.out.println(it.executeCommand("undo"));
-		System.out.println(it.executeCommand("exit"));
-		
-		
-		
+		MoteurRPN m = new MoteurRPN();
+		it.executeCommand("undo");
+		m.AddOP((double)3);
+		m.AddOP((double)5);
+		m.executeCommand("+");
+		m.ShowStack();
+		m.AddOP((double)5);
+		m.executeCommand("-");
+		m.ShowStack();
+		m.AddOP((double)5);
+		m.executeCommand("*");
+		m.ShowStack();
+		m.AddOP((double)5);
+		m.ShowStack();
+		m.executeCommand("/");
+		m.ShowStack();
+		m.AddOP((double) 5);
 
 	}
 

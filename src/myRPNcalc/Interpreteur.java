@@ -17,20 +17,25 @@ public class Interpreteur {
 		this.commands.put(name,  command);
 	}
 	
-	public int executeCommand(String name)
+	public Double executeCommand(String name)
 	{
 		if(this.commands.containsKey(name))
 		{
 			return this.commands.get(name).apply();
 		}
-		return 0;
+		return 0.0;
+	}
+	
+	public void listCommands() {
+		System.out.println("Commandes :");
+		this.commands.keySet().stream().forEach(System.out::println);
 	}
 	
 	public static Interpreteur init()
 	{
 		Interpreteur i = new Interpreteur();
-		i.addCommand("exit", () -> {System.exit(0); return 1;} );
-		i.addCommand("undo", () -> {System.out.println("undoing"); return 1;} );
+		i.addCommand("exit", () -> {System.exit(0); return 1.0;} );
+		i.addCommand("undo", () -> {System.out.println("undoing"); return 1.0;} );
 		return i;
 	}
 }
