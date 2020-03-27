@@ -7,7 +7,7 @@ public class Interpreteur {
 
 	private final Map<String, Commande> commands;
 	
-	private Interpreteur()
+	protected Interpreteur()
 	{
 		this.commands = new HashMap<>();
 	}
