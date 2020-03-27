@@ -4,9 +4,7 @@ public class RPNcalc {
 
 	public static void main(String[] args) {
 		
-		Interpreteur it = Interpreteur.init();
 		MoteurRPN m = new MoteurRPN();
-		it.executeCommand("undo");
 		m.AddOP((double)3);
 		m.AddOP((double)5);
 		m.executeCommand("+");
@@ -21,7 +19,6 @@ public class RPNcalc {
 		m.ShowStack();
 		m.executeCommand("/");
 		m.ShowStack();
-		m.AddOP((double) 5);
 
 	}
 

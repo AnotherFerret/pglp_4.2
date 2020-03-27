@@ -15,7 +15,7 @@ public class testInterpreteur {
 	public void testUndo() {
 		Interpreteur it = Interpreteur.init();
 		Double test = 1.0;
-		assertEquals(it.executeCommand("undo"), test);
+		assertEquals(it.executeCommand("undo"), test, 0);
 	}
 	
 	@Test
@@ -24,6 +24,26 @@ public class testInterpreteur {
 		exit.expectSystemExit();
 		it.executeCommand("exit");
 		fail();
+	}
+	
+	@Test
+	public void testCalcul()
+	{
+		MoteurRPN m = new MoteurRPN();
+		m.AddOP((double)3);
+		m.AddOP((double)5);
+		m.executeCommand("+");
+		m.ShowStack();
+		m.AddOP((double)5);
+		m.executeCommand("-");
+		m.ShowStack();
+		m.AddOP((double)5);
+		m.executeCommand("*");
+		m.ShowStack();
+		m.AddOP((double)5);
+		m.ShowStack();
+		m.executeCommand("/");
+		assertEquals(m.PopValue(), 3.0, 0);
 	}
 
 }

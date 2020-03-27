@@ -33,6 +33,11 @@ public class MoteurRPN extends Interpreteur {
 		operande.push(op);
 	}
 	
+	public double PopValue()
+	{
+		return operande.peek();
+	}
+	
 	public void ShowStack()
 	{
 		System.out.println(operande.toString());
