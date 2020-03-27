@@ -17,19 +17,20 @@ public class Interpreteur {
 		this.commands.put(name,  command);
 	}
 	
-	public void executeCommand(String name)
+	public int executeCommand(String name)
 	{
 		if(this.commands.containsKey(name))
 		{
-			this.commands.get(name).apply();
+			return this.commands.get(name).apply();
 		}
+		return 0;
 	}
 	
 	public static Interpreteur init()
 	{
 		Interpreteur i = new Interpreteur();
-		i.addCommand("exit", () -> System.out.println("shuting down"));
-		i.addCommand("undo", () -> System.out.println("undoing"));
+		i.addCommand("exit", () -> {System.exit(0); return 1;} );
+		i.addCommand("undo", () -> {System.out.println("undoing"); return 1;} );
 		return i;
 	}
 }
