@@ -23,6 +23,7 @@ public class Interpreteur {
 		{
 			return this.commands.get(name).apply();
 		}
+		System.out.println("Commande introuvable");
 		return 0.0;
 	}
 	

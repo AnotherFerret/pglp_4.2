@@ -12,13 +12,6 @@ public class testInterpreteur {
 	public final ExpectedSystemExit exit = ExpectedSystemExit.none();	
 	
 	@Test
-	public void testUndo() {
-		Interpreteur it = Interpreteur.init();
-		Double test = 1.0;
-		assertEquals(it.executeCommand("undo"), test, 0);
-	}
-	
-	@Test
 	public void testExit() {
 		Interpreteur it = Interpreteur.init();
 		exit.expectSystemExit();
@@ -33,17 +26,37 @@ public class testInterpreteur {
 		m.AddOP((double)3);
 		m.AddOP((double)5);
 		m.executeCommand("+");
-		m.ShowStack();
 		m.AddOP((double)5);
 		m.executeCommand("-");
-		m.ShowStack();
 		m.AddOP((double)5);
 		m.executeCommand("*");
-		m.ShowStack();
 		m.AddOP((double)5);
-		m.ShowStack();
 		m.executeCommand("/");
 		assertEquals(m.PopValue(), 3.0, 0);
+	}
+	
+	@Test
+	public void testUndo()
+	{
+		MoteurRPN m = new MoteurRPN();
+		m.AddOP((double)3);
+		m.AddOP((double)5);
+		m.AddOP((double)7);
+		m.executeCommand("undo");
+		assertEquals(m.PopValue(), 5.0, 0);
+	}
+	
+	@Test
+	public void testUndoOperations()
+	{
+		MoteurRPN m = new MoteurRPN();
+		m.AddOP((double)3);
+		m.AddOP((double)5);
+		m.AddOP((double)7);
+		m.executeCommand("+");
+		m.executeCommand("-");
+		m.executeCommand("undo");
+		assertEquals(m.PopValue(), 12.0, 0);
 	}
 
 }
