@@ -72,7 +72,7 @@ public class MoteurRPN extends Interpreteur {
 	{
 		try
 		{
-			AddOP(Double.parseDouble(name));
+			addOP(Double.parseDouble(name));
 		}
 		catch(NumberFormatException e)
 		{
@@ -82,18 +82,18 @@ public class MoteurRPN extends Interpreteur {
 
 	}
 	
-	public void AddOP(Double op)
+	public void addOP(Double op)
 	{
 		operande.push(op);
 		commands.push( () -> operande.pop() );
 	}
 	
-	public double PopValue()
+	public double popValue()
 	{
 		return operande.peek();
 	}
 	
-	public void ShowStack()
+	public void showStack()
 	{
 		System.out.println(operande.toString());
 	}

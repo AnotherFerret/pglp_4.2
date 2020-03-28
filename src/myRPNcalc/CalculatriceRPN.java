@@ -13,8 +13,8 @@ public class CalculatriceRPN {
 		{
 			try
 			{
-				m.executeCommand(s.WaitInput());
-				m.ShowStack();
+				m.executeCommand(s.waitInput());
+				m.showStack();
 			}
 			catch(EmptyStackException e1)
 			{

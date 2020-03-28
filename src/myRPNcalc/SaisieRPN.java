@@ -8,10 +8,10 @@ public class SaisieRPN {
 	
 	public SaisieRPN() 
 	{
-		 sc = new Scanner(System.in);
+		 sc = new Scanner(System.in, "UTF-8");
 	}
 	
-	public String WaitInput()
+	public String waitInput()
 	{
 		return sc.nextLine();
 	}
